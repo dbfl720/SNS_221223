@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sns.dao.PostMapper;
+import com.sns.post.dao.PostMapper;
 
 @Controller
 public class TestController {

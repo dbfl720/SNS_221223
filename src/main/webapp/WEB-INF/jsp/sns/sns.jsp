@@ -7,7 +7,7 @@
 <title>SNS 로그인</title>
 </head>
 <body>
-	<h1>로그인</h1>
+	<h1>SNS Hello World</h1>
 	
 </body>
 </html>
