@@ -105,6 +105,84 @@ $(document).ready(function() {
 	}); // longinIdCheckBtn
 	
 	
+	
+	
+	
+	
+	
+		// 회원가입
+		$('#signUpForm').on('submit', function(e) {
+			e.prevenDefault();  // submit 기능 중단  // submit을 쓰면 다음페이지로 넘어감.
+			
+			
+			
+			// validation
+			let loginId = $('#loginId').val().trim();
+			let password = $('#password').val();
+			let confirmPassword = $('#confirmPassword').val();
+			let name = $('#name').val().trim();
+			let email = $('#email').val().trim();
+			
+			if (!loginId) {
+				alert("아이디를 입력하세요.")
+				return false;  // form일 때는 false를 해야지 동작안함.
+			}
+			
+			if (!password || !confirmPassword) {
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+			
+			
+			if (password != confirmPassword) {
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
+			
+			if (!name) {
+				alert("이름을  입력하세요.");
+				return false;
+			}
+			
+			if(!email) {    // 이메일 형식에 맞는지 정규식 확인하는거 필요! 
+				alert("이메일을 입력하세요.");
+				return false;
+			}
+			
+			
+			
+			if ($("#idCheckOk").hasClass("d-none")) {
+				alert("아이디 중복확인을 다시 해주세요.");
+				return false;
+			}
+			
+			
+			
+			// 2) AJAX + form태그 활용 case   // RestController 
+			let url = $(this).attr("action");
+			console.log(url);
+			let params = $(this).serialize();  // 폼태그에 있는 *** name 속성값들로  파라미터 구성
+			console.log(params);
+			
+			
+			
+			$.post(url, params)	// request
+			.done(function(data) {  // success와 똑같음.
+				// response
+				if (data.code == 1) {  // 성공
+					alert("가입을 환영합니다! 로그인을 해주세요.")
+					location.href = "/user/sign_in_view";    // 절대경로로 써야됨.
+				} else { // 실패
+					alert(data.errorMessage);
+					
+				}
+			});  
+			
+		}); //signUpForm
+	
+	
+	
 });  // ready
 
 </script>

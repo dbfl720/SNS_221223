@@ -20,6 +20,14 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	
+	
+	/**
+	 * 아이디 중복 확인 API
+	 * @param loginId
+	 * @return
+	 */
+	
+	
 	// 중복 체크
 	@RequestMapping("/is_duplicated_id")
 	public Map<String, Object> isDuplicatedId(
@@ -42,5 +50,21 @@ public class UserRestController {
 		
 				
 	}
+	
+	
+	
+	
+	
+	
+	@PostMapping("/sign_up")
+	public Map<String, Object> signUp(
+			){
+		
+	}
+	
+	
+	
+	
+	
 	
 }
