@@ -22,4 +22,13 @@ public class UserController {
 		 model.addAttribute("view", "user/signUp");   // 가운데 section 조각페이지 이렇게 세팅해랏 !  - singUp(jsp)에서 view변수로 사용 가능.
 		 return "template/layout";
 	 }
+	 
+	 
+	 
+	//localhost:8080/user/sign_in_view
+		 @GetMapping("/sign_in_view")
+		 public String signInView(Model model) {
+			 model.addAttribute("view", "user/signIn");   // 가운데 section 조각페이지 이렇게 세팅해랏 !  - singUp(jsp)에서 view변수로 사용 가능.
+			 return "template/layout";
+		 }
 }

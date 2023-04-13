@@ -60,23 +60,21 @@
 <script>
 $(document).ready(function() {
 	// 중복 확인 버튼 클릭
-	$('#loginIdCheckBtn').on('click', function(){
-		// 경고 문구 초기화
-		$('#idCheckLength').addClass("d-none");
-		$('#idCheckDuplicated').addClass("d-none");
-		$('#idCheckOk').addClass("d-none");
+	$('#loginIdCheckBtn').on('click', function(e){
 		
-		
+		// validation
 		let loginId = $('#loginId').val().trim();
 		
 		// 4자 미만이면 경고 문구 노출
 		if (loginId.length < 4) {
-			$('#idCheckLength').removeClass('d-none');
+			$('#idCheckLength').removeClass('d-none'); // 경고문구 노출
+			$('#idCheckDuplicated').addClass("d-none");   // 숨김
+			$('#idCheckOk').addClass("d-none");   // 숨김
 			return;
 		}
 		
 		
-		
+		// 화면을 이동시키지 않고 ajax 통신으로 중복여부 확인하고 동적으로 문구 노출
 		// AJAX 통신 - 중복확인
 		$.ajax({
 			// request
@@ -88,10 +86,18 @@ $(document).ready(function() {
 				if(data.result) {
 					//중복
 					$("#idCheckDuplicated").removeClass("d-none");
+					$('#idCheckLength').addClass("d-none");   // 숨김
+					$('#idCheckOk').addClass("d-none");   // 숨김
 				} else {
 					// 사용 가능
 					$("#idCheckOk").removeClass("d-none");
+					$('#idCheckLength').addClass('d-none'); // 경고문구 노출
+					$('#idCheckDuplicated').addClass("d-none");   // 숨김
 				}
+			}
+			
+			,error: function(error) {
+				alert("아이디 중복확인에 실패했습니다. 관리자에게 문의해주세요.");
 			}
 		}); // AJAX
 		

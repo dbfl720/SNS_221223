@@ -9,3 +9,5 @@ header{height:100px;  padding-top:130px;}
 #loginIdCheckBtn{font-size:15px;}
 /* 회원가입 전체 박스 */
 .sign-up-box{margin-top:180px;}
+/* 로그인 박스 */
+.loginBox{margin-top: 200px;}
