@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @RequestMapping("/user")
 @Controller  // view화면을 보여줌, 요청을 받는 어노테이션, 요청이 들어오는 스프링 빈 / Dispatcher Servlet에서 @Controller 들을 스캔하고, @RequestMapping 을 참조하여 주소의 path와 일치하는 메소드가 수행된다.
@@ -27,8 +29,22 @@ public class UserController {
 	 
 	//localhost:8080/user/sign_in_view
 		 @GetMapping("/sign_in_view")
-		 public String signInView(Model model) {
-			 model.addAttribute("view", "user/signIn");   // 가운데 section 조각페이지 이렇게 세팅해랏 !  - singUp(jsp)에서 view변수로 사용 가능.
-			 return "template/layout";
-		 }
+	 public String signInView(Model model) {
+		 model.addAttribute("view", "user/signIn");   // 가운데 section 조각페이지 이렇게 세팅해랏 !  - singUp(jsp)에서 view변수로 사용 가능.
+		 return "template/layout";
+	 }
+		 
+		 
+		 
+	 @RequestMapping("/sign_out")
+		public String signOut(HttpSession session) {
+			// 세션에 있는 모든 것을 비운다.
+			session.removeAttribute("userId");
+			session.removeAttribute("userName");
+			session.removeAttribute("userLoginId");
+			
+			// 로그인 화면으로  이동
+			return "redirect:/user/sign_in_view";
+		}
+		 
 }
