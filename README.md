@@ -8,11 +8,6 @@
 
 2023-04-15 00:48:00,502 DEBUG [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
 
-2023-04-15 00:48:00,503 DEBUG [org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor] Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-
-2023-04-15 00:48:00,504 DEBUG [org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor] Writing [{timestamp=Sat Apr 15 00:48:00 KST 2023, status=405, error=Method Not Allowed, trace=org.springframe (truncated)...]
-
-2023-04-15 00:48:00,506 DEBUG [org.springframework.web.servlet.DispatcherServlet] Exiting from "ERROR" dispatch, status 405
 
 2023-04-15 00:48:03,660 DEBUG [org.springframework.web.servlet.DispatcherServlet] GET "/static/css/style.css", parameters={}
 
