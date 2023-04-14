@@ -11,3 +11,9 @@ header{height:100px;  padding-top:130px;}
 .sign-up-box{margin-top:180px;}
 /* 로그인 박스 */
 .loginBox{margin-top: 200px;}
+
+/* 타임라인 텍스트 */
+.textareaTimeline{border: none; height: 130px; width:480px;}
+.textareaBox{border:1px solid; padding:10px; height: 200px; width:500px;}
+.timelineTable{height: 500px; width: 500px;}
+.firstTable{height:20px;}
