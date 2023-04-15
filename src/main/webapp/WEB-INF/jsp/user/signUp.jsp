@@ -159,14 +159,14 @@ $(document).ready(function() {
 			
 			// 서버로 보내는 방법
 			// 2) AJAX + form태그 활용 case   // RestController 
-			let url = $(this).attr("action");  //action="/user/sign_up" 인가..?????
+			let url = $("#signUpForm").attr("action");  //action="/user/sign_up" 인가..?????
 			console.log(url);
-			let params = $(this).serialize();  // 폼태그에 있는 *** name 속성값들로  파라미터 구성  // Query Ajax로 호출하기 전에 serialize를 해주면 form안에 값들을 한 번에 전송 가능한 data로 만들 수 있어 많은 data를 보낼 때 유용
+			let params = $("#signUpForm").serialize();  // 폼태그에 있는 *** name 속성값들로  파라미터 구성  // Query Ajax로 호출하기 전에 serialize를 해주면 form안에 값들을 한 번에 전송 가능한 data로 만들 수 있어 많은 data를 보낼 때 유용
 			console.log(params);
 			
 			
-			
-			$.post(url, params)	// request  // ****** 질문 : params는 위에 validation 변수들 ??????
+			// ** $.post~ 방식은 간단하고 작은 파일 할 때만 사용.
+			$.post(url, params)	// request  
 			.done(function(data) {  // success와 똑같음. ajax 호출을 만드는 함수의 옵션으로 성공 함수를 전달하는 대신, 함수 자체에서 $.ajax를 반환하고 콜백을 done, fail, then 등으로 바인딩할 수 있다  // ***질문: data는 RestController에서 온 return 값???
 				// response
 				if (data.code == 1) {  // 성공

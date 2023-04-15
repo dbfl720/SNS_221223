@@ -36,7 +36,7 @@ $(document).ready(function() {
 		console.log(params);
 		
 		
-		
+		// ** $.post~ 방식은 간단하고 작은 파일 할 때만 사용.
 		$.post(url, params) // request
 		.done(function(data) {  // response
 			if (data.code == 1) {
