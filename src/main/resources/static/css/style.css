@@ -3,7 +3,7 @@
 html,body {height:100%;}
 
 
-header{height:100px;  padding-top:130px;}
+header{height:100px;  padding-top:150px;}
 
 .contents{min-height:780px; }
 #loginIdCheckBtn{font-size:15px;}
@@ -11,9 +11,16 @@ header{height:100px;  padding-top:130px;}
 .sign-up-box{margin-top:180px;}
 /* 로그인 박스 */
 .loginBox{margin-top: 200px;}
+.LoginIcon{margin-right:150px; color:black; font-size:22px;}
+.LoginIcon:hover{text-decoration: none;}
+.createUserName{font-size:22px;}
+.LogoutIcon{color:black; font-size:22px;}
+.LogoutIcon:hover{text-decoration: none;}
+.LoginHeaderBox{margin-right:20px; margin-top:15px;}
 
 /* 타임라인 텍스트 */
-.textareaTimeline{border: none; height: 130px; width:480px;}
-.textareaBox{border:1px solid; padding:10px; height: 200px; width:500px;}
-.timelineTable{height: 500px; width: 500px;}
-.firstTable{height:20px;}
+.textareaTimeline{border: none; height: 130px;}
+.textareaBox{border:1px solid; padding:10px;}
+.contents-box{width:650px; margin-top:100px;}
+.commentInput{width:570px;}
+
