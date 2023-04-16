@@ -11,6 +11,7 @@ header{height:100px;  padding-top:150px;}
 .sign-up-box{margin-top:180px;}
 /* 로그인 박스 */
 .loginBox{margin-top: 200px;}
+.loginImg{margin-top:-30px;}
 .LoginIcon{margin-right:150px; color:black; font-size:22px;}
 .LoginIcon:hover{text-decoration: none;}
 .createUserName{font-size:22px;}
