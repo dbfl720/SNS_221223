@@ -45,9 +45,9 @@ public class TestController {
 	 }
 	
 	
-	@ResponseBody
-	@RequestMapping("/test4")
-	public List<Map<String, Object>> test4() {
-		return postMapper.selectPostList();
-	}
+//	@ResponseBody
+//	@RequestMapping("/test4")
+//	public List<Map<String, Object>> test4() {
+//		return postMapper.selectPostList();
+//	}
 }

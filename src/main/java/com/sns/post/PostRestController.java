@@ -34,7 +34,7 @@ public class PostRestController {
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		
 		// db insert
-		int rowCount = ;
+		int rowCount = postBO.addPost(userId, userLoginId, content, file);
 		
 		// 응답
 		Map<String, Object> result = new HashMap<>();
