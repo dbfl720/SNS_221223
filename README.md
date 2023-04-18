@@ -81,7 +81,7 @@ at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite
 
 2023-04-15 00:48:03,660 DEBUG [org.springframework.web.servlet.DispatcherServlet] GET "/static/css/style.css", parameters={}
 
-2023-04-15 00:48:03,661 DEBUG [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2023-04-15 00:48:03,661 DEBUG [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]] 
 
 2023-04-15 00:48:03,663 DEBUG [org.springframework.web.servlet.DispatcherServlet] Completed 200 OK
 
