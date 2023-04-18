@@ -1,4 +1,74 @@
 
+#  🌳 에러 코드
+
+500에러
+
+**org.springframework.web.multipart.MultipartException: Current request is not a multipart request**
+
+at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:210)
+
+at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+
+at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+
+at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+ 
+
+
+ <br><br>
+ 
+ 
+* 🌾 원인 : date 오타.
+
+* 🌾 해결 방법 :  date -> data로 변경.
+ 
+
+
+ <br><br>
+**<전>** <br>
+
+
+![스크린샷 2023-04-18 오후 3 28 01](https://user-images.githubusercontent.com/116433637/232691942-dcfe99ae-a4a3-4b57-8870-e682de43b2a2.png)
+
+
+ <br><br>
+
+**<후>** <br>
+
+![스크린샷 2023-04-18 오후 3 29 35](https://user-images.githubusercontent.com/116433637/232691966-910fbc10-76bf-428b-ad72-d90b35315d5e.png)
+
+
+
+ <br>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #  🌳 에러 코드
 
