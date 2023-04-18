@@ -203,9 +203,9 @@ $(document).ready(function() {
 				, error:function(request, status, error) {   // 서버에서 에러가 발생했을 때 . 
 					alert("글을 저장하는데 실패했습니다. 관리자에게 문의해주세요.");
 				}
-				
+				   
 			}); // ajax
-			
+		
 		});
 
 }); // ready
