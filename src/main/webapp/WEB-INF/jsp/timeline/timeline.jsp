@@ -26,12 +26,14 @@
 			</c:if><%-- 글쓰기 영역 끝 --%>
 			
 
+
+		<c:forEach items="${postList}" var="postLists">
 		<%-- 타임라인 영역 --%>
 		<div class="my-5"> <%--y : y축 -> top , bottom --%>
 			<div class="border rounded mt-3">
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
-					<span class="font-weight-bold">사용자</span>
+					<span class="font-weight-bold">${postLists.userId}</span>
 					
 					<%-- 더보기(내가 쓴 글일 때만 노출) --%>
 					<a href="#" class="more-btn">
@@ -87,19 +89,17 @@
 					</div>
 				
 				<%-- 댓글 쓰기 --%>	
+				<c:if test="${not empty userId}">
 				<div class="d-flex mt-2 border-top justify-content-between" > <%-- border-top: 윗부분 경계 --%>
-					<input type="text" class="commentInput border-0 form-control mt-2" placeholder="댓글 달기" />
-					<button type="button" class="btn btn-light mt-2 ">게시</button>
+					<input  type="text" class="commentBox commentInput border-0 form-control mt-2" placeholder="댓글 달기" />
+					<button  type="button" class="commentBtn btn btn-light mt-2" data-post-id="${postLists.id}">게시</button>  <%-- id로하면 안됨. class로 해야됨. 계쏙 나오는 거라서.  --%>
 				</div>
-					
+				</c:if>
 				</div><%-- 댓글 목록 --%>
 		
 			</div> <%-- 타임라인 영역 끝 --%>
-			
-			
-			
-			
 		</div> 	
+		</c:forEach>
 	</div> 
 </div>
 
@@ -207,6 +207,34 @@ $(document).ready(function() {
 			}); // ajax
 		
 		});
+	
+	
+	
+		// 댓글 쓰기
+		$('.commentBtn').on('click', function() {
+			let postId = $(this).data("post-id");
+			// alert(postId);
+			
+			// 1) 댓글 내용 가져오기
+			/* let comment = $(this).prev().val();  // 근처에 value가져오기 .
+			alert(comment); */
+			
+			
+			
+			// 2) 댓글 내용 가져오기
+			let comment = $(this).siblings("input").val().trim();  // 형제중에 input태그 가져온다. 
+			alert("dd");
+			
+			
+			// validation
+			
+			
+			
+			// ajax
+			
+			
+			
+		}); // commentBtn
 
 }); // ready
 

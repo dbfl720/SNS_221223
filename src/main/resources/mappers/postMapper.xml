@@ -4,12 +4,16 @@
  
  
  <mapper namespace="com.sns.post.dao.PostMapper">
- 	<select id="selectPostList" resultType="map">
+ 	<select id="selectPostList" resultType="com.sns.post.model.Post">
  		SELECT
- 			*
+ 			`id`
+ 			,`userId`
+ 			,`content`
+ 			,`imagePath`
+ 			,`createdAt`
+ 			,`updatedAt`
 		FROM
 			`post`
- 	
  	</select>
  	
  	
