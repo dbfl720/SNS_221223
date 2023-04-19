@@ -12,7 +12,7 @@ public class UserBO {
 	@Autowired UserMapper userMapper;
 	
 	public User getUserByLoginId(String loginId) {
-		return userMapper.selectUserById(loginId);
+		return userMapper.selectUserByLoginId(loginId);
 	}
 	
 	
@@ -26,7 +26,13 @@ public class UserBO {
 	
 	
 	// select
-		public User getUserByLoginIdPassword(String loginId, String password) {
-			return userMapper.selectUserByLoginIdPassword(loginId, password);
-		}
+	public User getUserByLoginIdPassword(String loginId, String password) {
+		return userMapper.selectUserByLoginIdPassword(loginId, password);
+	}
+		
+		
+		
+	public User getUserById(int id) {  // 필수값 int 
+		return userMapper.selectUserById(id);
+	}
 }

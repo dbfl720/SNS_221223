@@ -8,10 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sns.comment.bo.CommentBO;
-import com.sns.comment.model.Comment;
-import com.sns.post.bo.PostBO;
-import com.sns.post.model.Post;
+import com.sns.timeline.bo.TimelineBO;
+import com.sns.timeline.model.CardView;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,11 +18,10 @@ import jakarta.servlet.http.HttpSession;
 public class TimelineController {
 
 	
-	@Autowired 
-	private PostBO postBO;
-	
 	@Autowired
-	private CommentBO commentBO;
+	private TimelineBO timelineBO;
+	
+
 	
 	//localhost:8080/timeline/timeline_view
 	@GetMapping("/timeline_view")
@@ -34,11 +31,16 @@ public class TimelineController {
 		
 		
 		// select DB
-		List<Post> postList = postBO.getPostList();
-		List<Comment> commentList = commentBO.getCommentList();
+		//List<Post> postList = postBO.getPostList();
+		//List<Comment> commentList = commentBO.getCommentList();
+		List<CardView> cardList = timelineBO.generateCardList(); // 화면용 가공용은 view이름 쓸 것임.
 		
-		model.addAttribute("commentList", commentList);
-		model.addAttribute("postList", postList);
+		
+		
+		
+		model.addAttribute("cardList", cardList);
+		//model.addAttribute("commentList", commentList);
+		//model.addAttribute("postList", postList);
 		model.addAttribute("view", "timeline/timeline");  // jsp - timeline폴더 - timeline.jsp 
 		
 		return "template/layout";

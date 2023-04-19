@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sns.comment.model.Comment;
+import com.sns.common.model.CommentView;
 
 @Repository
 public interface CommentMapper {
@@ -20,5 +21,5 @@ public interface CommentMapper {
 	
 	
 	// select
-	public List<Comment> selectCommentList();
+	public List<Comment> selectCommentListByPostId(int postId);
 }

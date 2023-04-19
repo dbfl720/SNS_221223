@@ -27,13 +27,13 @@
 			
 
 
-		<c:forEach items="${postList}" var="postLists">
+		<c:forEach items="${cardList}" var="card">
 		<%-- 타임라인 영역 --%>
 		<div class="my-5 border-bottom"> <%--y : y축 -> top , bottom --%>
 			<div class=" rounded mt-2">
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
-					<span class="font-weight-bold">${postLists.userId}</span>
+					<span class="font-weight-bold">${card.user.loginId}</span>
 					
 					<%-- 더보기(내가 쓴 글일 때만 노출) --%>
 					<a href="#" class="more-btn">
@@ -44,7 +44,7 @@
 				
 				<%-- 카드 이미지 --%>
 				<div>
-					<img class="w-100" height="450px" alt="본문 이미지" src="${postLists.imagePath}">			
+					<img class="w-100" height="450px" alt="본문 이미지" src="${card.post.imagePath}">			
 				</div>
 				
 				
@@ -59,7 +59,7 @@
 				
 				<%-- 글 --%>
 				<div class="mb-2">
-					<span class="font-weight-bold">${postLists.userId}</span>
+					<span class="font-weight-bold">${card.post.userId}</span>
 					<span>${postLists.content}</span>
 				</div>
 				
@@ -73,14 +73,12 @@
 				
 				<%-- 댓글 목록 --%>
 				<div>
-				<c:forEach items="${commentList}" var="commentLists">	
-				<c:if test="${postLists.id eq commentLists.postId}">
 					<div class="d-flex justify-content-between align-items-center">
 						<%-- 댓글 내용 --%>
 				
 						<div>
-							<span class="font-weight-bold">${commentLists.userId}</span>
-							<span>${commentLists.content}</span>
+							<span class="font-weight-bold"></span>
+							<span></span>
 						</div>
 					
 						<%-- 댓글 삭제 버튼 --%>
@@ -90,13 +88,11 @@
 							</a>
 						</div>
 					</div>
-				</c:if>	
-				</c:forEach>
 				<%-- 댓글 쓰기 --%>	
 				<c:if test="${not empty userId}">
 				<div class="d-flex mt-2 justify-content-between" > <%-- border-top: 윗부분 경계 --%>
 					<input  type="text" class="commentBox commentInput border-0 form-control mt-2 mr-2 col-10" placeholder="댓글 달기..." />
-					<button  type="button" class="commentBtn btn btn-light mt-2" data-post-id="${postLists.id}">게시</button>  <%-- id로하면 안됨. class로 해야됨. 계쏙 나오는 거라서.  --%>
+					<button  type="button" class="commentBtn btn btn-light mt-2" data-post-id="${card.post.id}">게시</button>  <%-- id로하면 안됨. class로 해야됨. 계쏙 나오는 거라서.  --%>
 				</div>
 				</c:if>
 				</div><%-- 댓글 목록 --%>
