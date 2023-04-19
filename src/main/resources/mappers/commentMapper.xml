@@ -39,7 +39,7 @@
  			,`createdAt`
  			,`updatedAt`
 		FROM
-			`comment`;
+			`comment`
 		WHERE
 			`postId` = #{postId}
  	

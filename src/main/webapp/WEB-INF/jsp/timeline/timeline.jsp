@@ -59,8 +59,8 @@
 				
 				<%-- 글 --%>
 				<div class="mb-2">
-					<span class="font-weight-bold">${card.post.userId}</span>
-					<span>${postLists.content}</span>
+					<span class="font-weight-bold">${card.user.loginId}</span>
+					<span>${card.post.content}</span>
 				</div>
 				
 				
