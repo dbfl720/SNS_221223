@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sns.comment.bo.CommentBO;
+import com.sns.comment.model.Comment;
 import com.sns.post.bo.PostBO;
 import com.sns.post.model.Post;
 
@@ -21,6 +23,9 @@ public class TimelineController {
 	@Autowired 
 	private PostBO postBO;
 	
+	@Autowired
+	private CommentBO commentBO;
+	
 	//localhost:8080/timeline/timeline_view
 	@GetMapping("/timeline_view")
 	public String timelineView(Model model, HttpSession session) {
@@ -30,7 +35,9 @@ public class TimelineController {
 		
 		// select DB
 		List<Post> postList = postBO.getPostList();
+		List<Comment> commentList = commentBO.getCommentList();
 		
+		model.addAttribute("commentList", commentList);
 		model.addAttribute("postList", postList);
 		model.addAttribute("view", "timeline/timeline");  // jsp - timeline폴더 - timeline.jsp 
 		

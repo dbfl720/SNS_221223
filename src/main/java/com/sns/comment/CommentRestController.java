@@ -23,16 +23,16 @@ public class CommentRestController {
 	
 	@PostMapping("/create")
 	public Map<String, Object> create(
-			@RequestParam("content") String content,
+			@RequestParam("comment") String comment,
 			@RequestParam("postId") int postId,
 			HttpSession session) {
 		
 		// 세션에서 정보 가져오기.
-		int userId = (int)session.getAttribute("userId");
+		int userId = (int)session.getAttribute("userId");    // ** breakpoint
 		
 		
 		// db insert
-		int rowCount = commentBO.addComment(content, postId, userId);
+		int rowCount = commentBO.addComment(comment, postId, userId);
 		
 		// 응답
 		Map<String, Object> result = new HashMap<>();

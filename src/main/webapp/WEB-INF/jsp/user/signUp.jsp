@@ -13,7 +13,7 @@
 						<div class="d-flex">
 							<input type="text" id="loginId" name="loginId"
 								class="form-control col-9" placeholder="아이디">
-							<button type="button" id="loginIdCheckBtn" class="btn btn-primary ml-2 ">중복확인</button>
+							<button type="button" id="loginIdCheckBtn" class="btn btn-light ml-2 ">중복확인</button>
 							<br>
 						</div> <%-- 아이디 체크 결과 --%> <%-- d-none 클래스: display none (보이지 않게) --%>
 						<div id="idCheckLength" class="small text-danger d-none">ID를
@@ -48,7 +48,7 @@
 			<br>
 
 			<button type="button" id="signUpBtn" name="signUpBtn"
-				class="btn btn-primary float-right col-12">가입</button>
+				class="btn btn-secondary float-right col-12">Join</button>
 		</form>
 	</div>
 </div>
