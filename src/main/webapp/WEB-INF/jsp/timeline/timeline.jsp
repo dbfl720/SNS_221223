@@ -212,7 +212,7 @@ $(document).ready(function() {
 	
 		// 댓글 쓰기
 		$('.commentBtn').on('click', function() {
-			let postId = $(this).data("post-id");
+			let postId = $(this).data("post-id");  // jquery .data() 문법
 			// alert(postId);
 			
 			// 1) 댓글 내용 가져오기
@@ -222,7 +222,7 @@ $(document).ready(function() {
 			
 			
 			// 2) 댓글 내용 가져오기
-			let comment = $(this).siblings("input").val().trim();  // 형제중에 input태그 가져온다. 
+			let comment = $(this).siblings("input").val().trim();  // jquery .siblings() 문법 - 형제중에 input태그 가져온다. 
 			alert("dd");
 			
 			
