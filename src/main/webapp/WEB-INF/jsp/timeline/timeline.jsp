@@ -44,7 +44,7 @@
 				
 				<%-- 카드 이미지 --%>
 				<div>
-					<img class="w-100" height="500px" alt="본문 이미지" src="${postLists.imagePath}">			
+					<img class="w-100" height="450px" alt="본문 이미지" src="${postLists.imagePath}">			
 				</div>
 				
 				
@@ -95,7 +95,7 @@
 				<%-- 댓글 쓰기 --%>	
 				<c:if test="${not empty userId}">
 				<div class="d-flex mt-2 justify-content-between" > <%-- border-top: 윗부분 경계 --%>
-					<input  type="text" class="commentBox commentInput border-0 form-control mt-2 mr-2" placeholder="댓글 달기..." />
+					<input  type="text" class="commentBox commentInput border-0 form-control mt-2 mr-2 col-10" placeholder="댓글 달기..." />
 					<button  type="button" class="commentBtn btn btn-light mt-2" data-post-id="${postLists.id}">게시</button>  <%-- id로하면 안됨. class로 해야됨. 계쏙 나오는 거라서.  --%>
 				</div>
 				</c:if>

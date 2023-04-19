@@ -20,8 +20,8 @@ header{height:100px;  padding-top:150px;}
 .LoginHeaderBox{margin-right:20px; margin-top:15px;}
 
 /* 타임라인 텍스트 */
-.textareaTimeline{border: none; height: 130px;}
+.textareaTimeline{border: none; height: 100px;}
 .textareaBox{border:1px solid; padding:10px;}
-.contents-box{width:650px; margin-top:100px;}
+.contents-box{width:450px; margin-top:100px;}
 .commentInput{width:570px;}
 
