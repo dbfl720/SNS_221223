@@ -78,8 +78,8 @@
 							<div class="d-flex justify-content-between align-items-center">
 								<%-- 댓글 내용 --%>
 									<div>
-										<span class="font-weight-bold">${comments.user.name}</span>
-										<span>${comments.comment.content}</span>
+										<small class="font-weight-bold">${comments.user.name}</small>
+										<small>${comments.comment.content}</small>
 									</div>
 								<%-- 댓글 삭제 버튼 --%>
 								<div>

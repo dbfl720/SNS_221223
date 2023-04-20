@@ -14,15 +14,15 @@
 <%-- 로그인 정보 --%>
 <c:if test="${not empty userId}">
 	<div class="d-flex justify-content-end">
-		<div class="font-weight-bold d-flex justify-content-end LoginHeaderBox">
+		<div class=" d-flex justify-content-end LoginHeaderBox">
 			<div class="createUserName font-weight-bold">${userName}</div>
-			<div class="createUserName2 mt-2">님 반갑습니다.</div>
+			<div class="createUserName2 mt-2 ml-2">${userLoginId}</div>
 			<a href="/user/sign_out" class="ml-5 mr-5 LogoutIcon">Logout</a>
 		</div>
 	</div>
 </c:if>
 <c:if test="${empty userId}">
 	<div class="d-flex justify-content-end">
-		<a href="/user/sign_in_view" class="font-weight-bold LoginIcon">Login</a>
+		<a href="/user/sign_in_view" class="LoginIcon">Login</a>
 	</div>
 </c:if>
