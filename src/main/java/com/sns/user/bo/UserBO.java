@@ -32,7 +32,10 @@ public class UserBO {
 		
 		
 		
-	public User getUserById(int id) {  // 필수값 int 
+	public User getUserById(int id) {  // 필수값 int   // 1명의 User 가져온다. - User 
 		return userMapper.selectUserById(id);
 	}
+
+
+	
 }

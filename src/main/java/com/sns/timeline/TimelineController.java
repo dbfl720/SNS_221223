@@ -27,15 +27,10 @@ public class TimelineController {
 	@GetMapping("/timeline_view")
 	public String timelineView(Model model) {
 		
-	
-		
-		
-		// select DB
+
 		//List<Post> postList = postBO.getPostList();
 		List<CardView> cardList = timelineBO.generateCardList(); // 화면용 가공용은 view이름 쓸 것임.
-		
-		
-		
+
 		
 		model.addAttribute("cardList", cardList);
 		//model.addAttribute("postList", postList);

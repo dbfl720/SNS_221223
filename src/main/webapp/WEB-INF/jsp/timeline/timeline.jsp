@@ -27,7 +27,7 @@
 			
 
 
-		<c:forEach items="${cardList}" var="card">
+		<c:forEach items="${cardList}" var="card" varStatus="status">
 		<%-- 타임라인 영역 --%>
 		<div class="my-5 border-bottom"> <%--y : y축 -> top , bottom --%>
 			<div class=" rounded mt-2">
@@ -71,23 +71,24 @@
 				</div>
 				</div>
 				
-				<%-- 댓글 목록 --%>
-				<div>
-					<div class="d-flex justify-content-between align-items-center">
-						<%-- 댓글 내용 --%>
 				
-						<div>
-							<span class="font-weight-bold"></span>
-							<span></span>
-						</div>
-					
-						<%-- 댓글 삭제 버튼 --%>
-						<div>
-							<a href="#">
-								<img  class="mr-3" width="15px" height="15px" alt="x-icon" src="/static/img/x-icon.png">
-							</a>
-						</div>
-					</div>
+					<%-- 댓글 목록 --%>
+				<div>
+						<c:forEach items="${card.commentList}" var="comments">
+							<div class="d-flex justify-content-between align-items-center">
+								<%-- 댓글 내용 --%>
+									<div>
+										<span class="font-weight-bold">${comments.user.name}</span>
+										<span>${comments.comment.content}</span>
+									</div>
+								<%-- 댓글 삭제 버튼 --%>
+								<div>
+									<a href="#">
+										<img  class="mr-3" width="15px" height="15px" alt="x-icon" src="/static/img/x-icon.png">
+									</a>
+								</div>
+							</div>
+						</c:forEach>
 				<%-- 댓글 쓰기 --%>	
 				<c:if test="${not empty userId}">
 				<div class="d-flex mt-2 justify-content-between" > <%-- border-top: 윗부분 경계 --%>
