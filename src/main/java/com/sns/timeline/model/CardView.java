@@ -6,7 +6,7 @@ import com.sns.comment.model.CommentView;
 import com.sns.post.model.Post;
 import com.sns.user.model.User;
 
-// View용 객체  - db부화 막을 수 있음. - mvc modle 아님    // dto라고 생각해라 (즉, 가공하는 객체) // 데이터를 여기에 담음.
+// View용 객체  - db부화 막을 수 있음. - mvc modle 아님    // 즉, 가공하는 객체) // 데이터를 여기에 담음.
 // 글 1개와 매핑됨, 즉 카드 하나 .
 public class CardView {
 		//  글 1개

@@ -39,7 +39,7 @@ public class CommentBO {
 	// output: 가공된 댓글 리스트              input : postId    
 	public List<CommentView> generateCommentViewList(int postId) {
 		
-		// 결과 리스트
+		// 결과 리스트 - 결과적으로 글에 해당하는 댓글들(한개가 아닌 여러개)을 TimelineController에 전달해야 하기 때문에 List임.
 		List<CommentView> commentViewList = new ArrayList<>();  
 		
 		// 글에 해당하는 댓글들 가져오기 , db에서 가져오기 .
@@ -58,7 +58,7 @@ public class CommentBO {
 			commentView.setComment(comment);
 			
 			// 댓글쓴이 
-			User user = userBO.getUserById(comment.getUserId());
+			User user = userBO.getUserById(comment.getUserId()); // comment에 해당하는 유저 아이디 
 			commentView.setUser(user);
 			
 			commentViewList.add(commentView);

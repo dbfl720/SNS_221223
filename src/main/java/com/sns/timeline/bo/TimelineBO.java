@@ -44,6 +44,7 @@ public class TimelineBO {
 		
 		// postList 반복문 -  post를 이용해서 카드에 정보 담기.  
 		// ****** 1:1로   Post를 -> CardView로 변환  => 최종적으로 cardViewList에 넣는다. (add)
+		// Post => CardView 
 		for(Post post : postList) {   // 0 1 2 
 			CardView card = new CardView();  // 비어있는 카드 1개 생성.
 				
@@ -55,7 +56,7 @@ public class TimelineBO {
 		User user = userBO.getUserById(post.getUserId());  // **글쓴이 정보는 글 안에 들어있기 때문에 post.getId() ** post에 유저 아이디 정보가 들어있어서.. (post.getUserId())
 		card.setUser(user);  // 지금 가져온 user정보를 카드에 넣는다. 
 		
-		// 댓글들
+		// 댓글들 (여러개라 List) 
 		List<CommentView> commentList = commentBO.generateCommentViewList(post.getId());   // 글번호에 해당하는 거 달라. : post.getId()
 		card.setCommentList(commentList);
 		
