@@ -48,9 +48,16 @@
 				</div>
 				
 				
+				
 				<%-- 좋아요 --%>
+				
 				<div class="mt-3 mb-3">
-					<a href="#">
+				<%-- 좋아요가 안눌러졌을 때  (빈 하트) --%>
+					<a href="#" class="like-btn" data-post-id="${card.post.id}">
+						<img width="18px" height="18px" alt="empty heart" src="/static/img/heart-icon.png">
+					</a>
+					<%-- 좋아요가 눌러졌을 때 (채워진 하트) --%>
+					<a href="#" class="like-btn" data-post-id="${card.post.id}">
 						<img width="18px" height="18px" alt="filled heart" src="/static/img/heart-icon (1).png">
 					</a>
 					좋아요 10000개
@@ -78,7 +85,7 @@
 							<div class="d-flex justify-content-between align-items-center">
 								<%-- 댓글 내용 --%>
 									<div>
-										<small class="font-weight-bold">${comments.user.name}</small>
+										<small class="font-weight-bold">${comments.user.loginId}</small>
 										<small>${comments.comment.content}</small>
 									</div>
 								<%-- 댓글 삭제 버튼 --%>
@@ -259,16 +266,39 @@ $(document).ready(function() {
 				
 				
 			}); // ajax
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 		}); // commentBtn
+		
+		
+		
+
+		// 좋아요/해제
+		$('.like-btn').on('click', function(e) {
+			e.preventDefault(); // 위로 올라가는 현상 방지
+			
+			let postId = $(this).data("post-id");
+			//alert(postId);
+			
+			$.ajax({
+				// req
+				url:"/like/" + postId    //    /post/13
+				
+				// res
+				, success:function(data) {
+					if (data.code == 1) {
+						location.reload();
+					} else if (data.code == 300) {
+						alert(data.errorMessage);
+						// 비로그인 시 로그인 페이지로 이동
+						location.href = "/user/sign_in_view";
+					}
+				}
+				, error:function(request, status, error) {
+					alert("좋아요/해제 실패했습니다.");
+				}
+			});
+		});
+		
 
 }); // ready
 

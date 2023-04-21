@@ -19,10 +19,12 @@ public class CommentBO {
 	@Autowired
 	private CommentMapper commentMapper;
 	
-	
+	//브라우저 <->  Controller <-> TimelineBO. -> PostBO -> UserBO.   
+	//                            CommentBO -> UserBO <-> xml 
+	// 어떤 사이트를 만들던 간에 userBo는 db에 가까움.
+		
 	@Autowired
 	private UserBO userBO;
-
 	
 	// insert
 	public int addComment(
@@ -54,13 +56,14 @@ public class CommentBO {
 			
 			
 			// ** CommentView 클래스의 필드 수만큼 똑같이 세팅.  
-			// 댓글
+			// 댓글 하나
 			commentView.setComment(comment);
 			
 			// 댓글쓴이 
 			User user = userBO.getUserById(comment.getUserId()); // comment에 해당하는 유저 아이디 
 			commentView.setUser(user);
 			
+			// **** 댓글 정보를 list에 담는다. 
 			commentViewList.add(commentView);
 			
 			

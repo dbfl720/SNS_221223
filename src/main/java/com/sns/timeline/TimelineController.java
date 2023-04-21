@@ -25,11 +25,12 @@ public class TimelineController {
 	
 	//localhost:8080/timeline/timeline_view
 	@GetMapping("/timeline_view")
-	public String timelineView(Model model) {
+	public String timelineView(Model model, HttpSession session) {
 		
 
 		//List<Post> postList = postBO.getPostList();
-		List<CardView> cardList = timelineBO.generateCardList(); // 화면용 가공용은 view이름 쓸 것임.
+		Integer userId = (Integer)session.getAttribute("userId");
+		List<CardView> cardList = timelineBO.generateCardList(userId); // 화면용 가공용은 view이름 쓸 것임.
 
 		
 		model.addAttribute("cardList", cardList);
