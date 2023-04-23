@@ -21,7 +21,7 @@
  	</insert>
  	
  	
- 	<select id="selectLikeByUserIdPostId" parameterType="int" resultType="int">
+ 	<select id="selectLikeCountByUserIdPostId" parameterType="int" resultType="int">
  		SELECT
  			COUNT(1)
  		FROM
@@ -41,5 +41,32 @@
 			`userId` = #{userId}
 			AND `postId` = #{postId}
  	</delete>
- 
+ 	
+ 	
+ 	<select id="checkLike" parameterType="Integer" resultType="boolean">
+ 		SELECT EXISTS(               <!-- null -> false 바꾸는 것.  -->
+ 		
+ 		SELECT 1 
+ 		FROM `like`
+ 		WHERE
+			`userId` = #{userId}
+			AND `postId` = #{postId})
+ 		
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="likeCount" parameterType="Integer" resultType="int">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			`like`
+		WHERE
+			`postId` = #{postId}
+ 		
+ 	
+ 	</select>
+ 	
+ 	
+
  </mapper>

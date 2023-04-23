@@ -22,4 +22,12 @@ public interface CommentMapper {
 	
 	// select
 	public List<Comment> selectCommentListByPostId(int postId);  // db에서 가져오는 것이기 때문에 테이블과 매핑되는 Comment로 써라. 
+
+
+
+	
+	// delete
+		public int deleteComment( int commentId);
+		
+		
 }

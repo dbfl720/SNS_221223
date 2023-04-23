@@ -46,4 +46,27 @@ public class CommentRestController {
 		return result;
 	}
 	
+	
+	
+	@PostMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("commentId") int commentId){
+				
+				
+				//  db
+				int rowCount = commentBO.deleteComment(commentId);
+		
+				// 응답				
+				Map<String, Object> result = new HashMap<>();
+				if (rowCount > 0) {
+					result.put("code", 1);
+					result.put("result", "성공");
+					
+				} else {
+					result.put("code", 500);
+					result.put("errorMessage", "삭제를 성공하지 못했습니다.");
+				}
+				return result;
+			}
+	
 }

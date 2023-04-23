@@ -12,6 +12,8 @@ import com.sns.like.bo.LikeBO;
 
 import jakarta.servlet.http.HttpSession;
 
+
+// like table에 가는 것 이기 때문에 LikeRestController 만듬
 @RestController
 public class LikeRestController {
 	
@@ -30,8 +32,13 @@ public class LikeRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-		// 세션에서 정보 가져오기.
-		int userId = (int)session.getAttribute("userId");
+		// 로그인 여부 체크
+		Integer userId = (Integer)session.getAttribute("userId"); // null 허용 - Integer
+		if (userId == null) {
+			result.put("code", 300);
+			result.put("errorMessage", "로그인 후 사용 가능합니다.");
+			return result;
+		}
 		
 		// BO 호출  => BO안에서 like 여부 체크 
 		likeBO.likeToggle(userId, postId);
@@ -39,7 +46,7 @@ public class LikeRestController {
 		
 		// 응답
 			result.put("code", 1);
-			result.put("result", true);
+			result.put("result", "성공");
 		return result;
 	}
 }

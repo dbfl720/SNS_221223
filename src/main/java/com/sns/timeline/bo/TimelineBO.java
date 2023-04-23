@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sns.comment.bo.CommentBO;
 import com.sns.comment.model.CommentView;
 import com.sns.like.bo.LikeBO;
+import com.sns.like.model.Like;
 import com.sns.post.bo.PostBO;
 import com.sns.post.model.Post;
 import com.sns.timeline.model.CardView;
@@ -62,13 +63,23 @@ public class TimelineBO {
 		card.setUser(user);  // 지금 가져온 user정보를 카드에 넣는다. 
 		
 		// 댓글들 (여러개라 List) 
-		List<CommentView> commentList = commentBO.generateCommentViewList(post.getId());   // 글번호에 해당하는 거 달라. : post.getId()
+		List<CommentView> commentList = commentBO.generateCommentViewList(post.getId());   // 글 번호에 해당하는 거 달라. : post.getId()
 		card.setCommentList(commentList);
 		
 		
 		// 내가(로그인 된 사람) 좋아요를 눌렀는지 여부
-		boolean checkLike = likeBO.likeToggle(user.getId(), post.getId());
-		card.setFilledLike();
+		boolean like = likeBO.checkLike(userId, post.getId());
+		card.setFilledLike(like);
+		
+		
+		
+		// 좋아요 개수
+		Integer likeCount = likeBO.likeCount(post.getId());
+		card.setLikeCount(likeCount);
+		
+		
+		
+		// 댓글 삭제
 		
 		
 		

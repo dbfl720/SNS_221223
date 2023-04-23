@@ -60,7 +60,7 @@ public class CommentBO {
 			commentView.setComment(comment);
 			
 			// 댓글쓴이 
-			User user = userBO.getUserById(comment.getUserId()); // comment에 해당하는 유저 아이디 
+			User user = userBO.getUserById(comment.getUserId()); // comment에 해당하는 유저 아이디 // comment를 쓴 사람이니깐.
 			commentView.setUser(user);
 			
 			// **** 댓글 정보를 list에 담는다. 
@@ -75,6 +75,12 @@ public class CommentBO {
 
 
 
+	
+
+	// delete
+		public int deleteComment (int commentId) {	
+			return commentMapper.deleteComment(commentId);
+		}
 	
 	
 	
