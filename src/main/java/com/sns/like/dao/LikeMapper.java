@@ -28,12 +28,12 @@ public interface LikeMapper {
 	
 	
 	// select
-	public boolean checkLike (
+	public boolean selectCheckLike (
 			@Param("userId")Integer userId,
 			@Param("postId")Integer postId);
 	
 	// select
-	public int likeCount (
+	public int selectLikeCount (
 			@Param("postId")Integer postId);
 	
 }

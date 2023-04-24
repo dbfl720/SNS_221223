@@ -121,22 +121,37 @@ $(document).ready(function() {
 			let confirmPassword = $('#confirmPassword').val();
 			let name = $('#name').val().trim();
 			let email = $('#email').val().trim();
+			var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 			
 			if (!loginId) {
 				alert("아이디를 입력하세요.")
 				return false;  // form일 때는 false를 해야지 동작안함.
 			}
 			
-			if (!password || !confirmPassword) {
+			if (!password) {
 				alert("비밀번호를 입력하세요.");
 				return false;
 			}
 			
+			if(false === reg.test(password)) {
+				alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+				return false;
+				}else {
+				console.log("통과");
+				}
+
+			
+			
+			if( !confirmPassword) {
+				alert("비밀번호 일치여부를 입력하세요.");
+				return false;
+			}
 			
 			if (password != confirmPassword) {
 				alert("비밀번호가 일치하지 않습니다.");
 				return false;
 			}
+			
 			
 			
 			if (!name) {
@@ -149,6 +164,14 @@ $(document).ready(function() {
 				return false;
 			}
 			
+			
+			if(email) {
+			    var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+			    if (!regEmail.test(email)) {
+			        alert('이메일 형식에 맞춰주세요.');
+			        return false;
+			    }
+			}
 			
 			// 아이디 중복확인 완료 됐는지 확인 - idCheckOk d-none이 있으면 alert 띄우기 
 			if ($("#idCheckOk").hasClass("d-none")) {

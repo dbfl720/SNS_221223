@@ -15,8 +15,8 @@
 <c:if test="${not empty userId}">
 	<div class="d-flex justify-content-end">
 		<div class=" d-flex justify-content-end LoginHeaderBox">
-			<div class="createUserName font-weight-bold">${userName}</div>
-			<div class="createUserName2 mt-2 ml-2">${userLoginId}</div>
+			<div class="createUserName font-weight-bold">${userLoginId}</div>
+			<div class="createUserName2 mt-2 ml-2">${userName}</div>
 			<a href="/user/sign_out" class="ml-5 mr-5 LogoutIcon">Logout</a>
 		</div>
 	</div>

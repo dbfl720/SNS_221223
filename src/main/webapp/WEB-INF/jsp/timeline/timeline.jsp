@@ -332,6 +332,8 @@
 
 				
 				
+				
+				
 				// 삭제
 				$('.deleteBtn').on('click', function(e) {
 					e.preventDefault(); // 위로 올라가는 현상 방지
