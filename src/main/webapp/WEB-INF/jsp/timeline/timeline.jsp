@@ -95,22 +95,39 @@
 					<%-- 댓글 목록 --%>
 					<div>
 						<c:forEach items="${card.commentList}" var="comments">
-							<div class="d-flex justify-content-between align-items-center">
-								<%-- 댓글 내용 --%>
-								<div>
-									<small class="font-weight-bold">${comments.user.loginId}</small>
-									<small>${comments.comment.content}</small>
-								</div>
-								<%-- 댓글 삭제 버튼 --%>
-
-								<div>
-									<a href="#" data-comment-id="${comments.comment.id}" class="deleteBtn"> <img
-										class=" mr-3" width="15px" height="15px" alt="x-icon"
-										src="/static/img/x-icon.png">
-									</a>
-								</div>
-							</div>
+							<c:choose>
+								<c:when test="${comments.comment.userId eq userId}">
+									<div class="d-flex justify-content-between align-items-center">	
+										<%-- 댓글 내용 --%>
+										<div>
+											<small class="font-weight-bold">${comments.user.loginId}</small>
+											<small>${comments.comment.content}</small>
+										</div>
+										<%-- 댓글 삭제 버튼 --%>
+									
+											<div>
+												<a href="#" data-comment-id="${comments.comment.id}" class="deleteBtn"> <img
+													class=" mr-3" width="15px" height="15px" alt="x-icon"
+													src="/static/img/x-icon.png">
+												</a>
+											</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="d-flex justify-content-between align-items-center">	
+										<%-- 댓글 내용 --%>
+										<div>
+											<small class="font-weight-bold">${comments.user.loginId}</small>
+											<small>${comments.comment.content}</small>
+										</div>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
+						
+
+						
+						
 						<%-- 댓글 쓰기 --%>
 						<c:if test="${not empty userId}">
 							<div class="d-flex mt-2 justify-content-between">
@@ -268,7 +285,7 @@
 						success : function(data) { // jquery ajax 함수가 json string을 object로 파싱해줌
 							if (data.code = 1) {
 								alert(data.result);
-								location.href = "/timeline/timeline_view";
+								location.reload();
 							} else {
 								alert(data.errorMessage);
 							}
@@ -283,6 +300,8 @@
 
 				}); // commentBtn
 
+				
+				
 				// 좋아요/해제
 				$('.like-btn').on('click', function(e) {
 					e.preventDefault(); // 위로 올라가는 현상 방지

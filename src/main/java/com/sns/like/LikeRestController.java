@@ -24,10 +24,10 @@ public class LikeRestController {
 	
 	
 	//  GET :  /like?postId=13      @RequestParam으로 받기.
-	//  GET or POST: /like/13       @PathVariable으로 받기. (와일드카드)
+	//  GET or POST: /like/13       @PathVariable으로 받기. (와일드카드) - URL 경로에 변수를 넣어주는 것
 	@RequestMapping("/like/{postId}") // 어떤 메소드도 허용. get, post
 	public Map<String, Object> like(
-			@PathVariable int postId,
+			@PathVariable int postId,  
 			HttpSession session) {
 		
 		Map<String, Object> result = new HashMap<>();
