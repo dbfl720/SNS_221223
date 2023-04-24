@@ -23,7 +23,7 @@ public class CardView {
 
 		
 		// 좋아요 n개
-		private Integer likeCount;
+		private int likeCount;  // 개수 int 
 		
 		
 		
@@ -31,9 +31,6 @@ public class CardView {
 		private boolean filledLike;  // 기본값 false 
 
 
-		
-		
-		
 
 		public Post getPost() {
 			return post;
@@ -71,13 +68,13 @@ public class CardView {
 
 
 
-		public Integer getLikeCount() {
+		public int getLikeCount() {
 			return likeCount;
 		}
 
 
 
-		public void setLikeCount(Integer likeCount) {
+		public void setLikeCount(int likeCount) {
 			this.likeCount = likeCount;
 		}
 
@@ -92,6 +89,12 @@ public class CardView {
 		public void setFilledLike(boolean filledLike) {
 			this.filledLike = filledLike;
 		}
+
+
+		
+		
+		
+
 
 		
 		

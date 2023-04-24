@@ -33,6 +33,29 @@
  	
  	
  	
+ 	
+ 	<!-- likeCount 쿼리 하나로 합치기  // mybatis 문법--> 
+ 	<select id="selectLikeCountByPostIdOrUserId" parameterType="map" resultType="int">
+ 		SELECT
+ 			COUNT(*)
+		FROM
+			`like`
+		WHERE
+			`postId` = #{postId}
+			<if test="userId != null">
+			AND `userId` = #{userId}
+			</if>
+ 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	<delete id="deleteLikeByUserIdPostId" parameterType="int">
  		DELETE
  		FROM
@@ -56,9 +79,9 @@
  	
  	
  	
- 	<select id="selectLikeCount" parameterType="Integer" resultType="int">
+ 	<select id="selectLikeCountByPostId" parameterType="int" resultType="int">
  		SELECT
- 			COUNT(*)
+ 			COUNT(1)
  		FROM
  			`like`
 		WHERE

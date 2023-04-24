@@ -17,7 +17,7 @@ import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
 
-//DB 연동 x 
+//DB 연동 x // BO를 가져오는ㄱ ㅔ좋음. Mapper부르는건 안 좋음.
 @Service
 public class TimelineBO {
 	
@@ -70,12 +70,14 @@ public class TimelineBO {
 		// 내가(로그인 된 사람) 좋아요를 눌렀는지 여부
 		boolean like = likeBO.checkLike(userId, post.getId());
 		card.setFilledLike(like);
-		
+		// 선생님 코드 - card.setFiledLike(likeBO.existLike(post.getId(), userId));  //post.getId(), userId - 순서 상관 없음.
 		
 		
 		// 좋아요 개수
-		Integer likeCount = likeBO.likeCount(post.getId());
+		Integer likeCount = likeBO.getLikeCouHntByPostId(post.getId());
 		card.setLikeCount(likeCount);
+		// 선생님 코드
+		//card.getLikeCountByPostId(likeBO.);
 		
 		
 		

@@ -18,7 +18,7 @@ public class LikeBO {
 	// select - 좋아요 삭제,추가 
 	public void likeToggle(int userId, int postId) {
 		// like 있는지 확인
-		int likeCount = likeMapper.selectLikeCountByUserIdPostId(userId, postId);
+		int likeCount = likeMapper.selectLikeCountByPostIdOrUserId(postId, userId);
 		if(likeCount > 0) { // 있으면 제거
 			likeMapper.deleteLikeByUserIdPostId(userId, postId);
 			
@@ -30,18 +30,34 @@ public class LikeBO {
 	
 	// select - 좋아요 true,false 체크 
 	public boolean checkLike (Integer userId, Integer postId) {  // null 일수 있어서 Integer.
-		boolean checkLike = likeMapper.selectCheckLike(userId, postId);
+		boolean checkLike = likeMapper.selectCheckLike(userId, postId);   // breakpoint **
 		return checkLike;
 	}
 	
 	
+//	public boolean existLike(int postId, Integer userId) { //postId - null이면 안되서 int, userId - null 이라서 Integer
+//		// 비로그인
+//		if (userId == null) {
+//			return false;
+//		}
+//		
+//		
+//		// 로그인
+//		return likeMapper.selectLikeCountByPostIdOrUserId(postId, userId) > 0;     //// 순서 중요. userId, postId 
+//		
+//	}
+	
+	
 	// select
-	public Integer likeCount ( Integer postId) {
-		Integer likeCount = likeMapper.selectLikeCount( postId);
-		return likeCount;
+	public int getLikeCouHntByPostId (int postId) {  // 개수 리턴 int 
+		return likeMapper.selectLikeCountByPostIdOrUserId(postId, null);
+		
 	}
 	
 	
+	
+	
+
 	
 	
 	
