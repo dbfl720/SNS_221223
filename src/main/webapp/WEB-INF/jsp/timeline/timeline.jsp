@@ -42,11 +42,19 @@
 					<div class="p-2 d-flex justify-content-between">
 						<span class="font-weight-bold">${card.user.loginId}</span>
 
+
+
 						<%-- 더보기(내가 쓴 글일 때만 노출) --%>
-						<a href="#" class="more-btn"> <img
+						<c:if test="${card.user.id eq userId}">
+						<a href="#" class="more-btn " data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}"> <img
 							src="/static/img/more-icon.png" width="30">
 						</a>
+						</c:if>
 					</div>
+
+
+
+
 
 
 					<%-- 카드 이미지 --%>
@@ -104,9 +112,9 @@
 											<small>${comments.comment.content}</small>
 										</div>
 										<%-- 댓글 삭제 버튼 --%>
-									
 											<div>
-												<a href="#" data-comment-id="${comments.comment.id}" class="deleteBtn"> <img
+												<a href="#" data-comment-id="${comments.comment.id}" class="deleteBtn" >
+												 <img
 													class=" mr-3" width="15px" height="15px" alt="x-icon"
 													src="/static/img/x-icon.png">
 												</a>
@@ -149,6 +157,26 @@
 		</c:forEach>
 	</div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal" >
+	<%-- modal-dialog-centered : 모달 창을 수직 가운데 정렬 --%>
+	<%-- modal-sm: small 모달 --%>
+  	<div class="modal-dialog modal-dialog-centered modal-sm"> 
+    	<div class="modal-content text-center">
+      		<div class="py-3 border-bottom"> 
+      			<a href="#" id="deletePostBtn">삭제하기</a>
+   			</div>
+   			<div class="py-3">
+   				<%-- data-dismiss="modal" => 모달창 닫힘 --%>
+   				<a href="#" data-dismiss="modal">취소하기</a>
+   			</div>
+    	</div>
+  </div>
+</div>
+
+
 
 
 <script>
@@ -368,6 +396,64 @@
 
 				}); // 삭제
 
+				
+				
+				
+				
+				// 글 삭제 (... 더보기 버튼 클릭) -- 글 삭제 위해서.
+				$('.more-btn').on('click', function(e){  
+					e.preventDefault();   // a태그 위로 올라감 방지.
+					
+					let postId = $(this).data('post-id');   // getting
+					//alert(postId);
+					// 모달 태그에 (재활용 되는) data-post-id를 심어줌
+					$('#modal').data('post-id', postId);  // setting - modal태그에 세팅한 것임. 내부적으로 postId심어져있음 
+				}); // 글 삭제
+				
+				
+				// 모달 안에 있는 삭제하기 버튼 클릭 => 진짜 삭제
+				$('#modal #deletePostBtn').on('click', function(e){   // modal 안에 있는 deletePostBtn  띄어쓰기.
+					e.preventDefault();
+					
+				
+					let postId = $('#modal').data('post-id');
+					// alert(postId);
+				
+					
+					
+					
+					
+					
+					// ajax 글 삭제 
+					$.ajax({
+						// request
+						type : "POST",
+						url : "/post/delete",
+						data : {
+							"postId" : postId
+						}
+
+						// response
+						,
+						success : function(data) { // jquery ajax 함수가 json string을 object로 파싱해줌
+							if (data.code == 1) {
+								alert(data.result);
+								location.reload();
+							} else {
+								alert(data.errorMessage);
+							}
+						}
+
+						,
+						error : function(request, status, error) {
+							alert("요청에 실패했습니다. 관리자에게 문의해주세요.");
+						}
+						
+						
+					}); // ajax 
+				});
+				
+				
 			}); // ready
 </script>
 

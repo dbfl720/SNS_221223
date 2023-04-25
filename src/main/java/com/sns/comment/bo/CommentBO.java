@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sns.comment.dao.CommentMapper;
 import com.sns.comment.model.Comment;
 import com.sns.comment.model.CommentView;
+import com.sns.post.model.Post;
 import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
@@ -72,7 +73,9 @@ public class CommentBO {
 		
 		return commentViewList;
 	}
-
+	
+	
+	
 
 
 	

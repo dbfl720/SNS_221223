@@ -23,6 +23,11 @@ public interface PostMapper {
 	
 	// select
 	public List<Post> selectPostList();
+	
+	
+	
+	// delete
+	public int deletePostByPostIdUserId (int postId, int userId);
 }
 
 

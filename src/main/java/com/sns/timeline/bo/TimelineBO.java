@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.sns.comment.bo.CommentBO;
 import com.sns.comment.model.CommentView;
 import com.sns.like.bo.LikeBO;
-import com.sns.like.model.Like;
 import com.sns.post.bo.PostBO;
 import com.sns.post.model.Post;
 import com.sns.timeline.model.CardView;
@@ -17,7 +16,7 @@ import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
 
-//DB 연동 x // BO를 가져오는ㄱ ㅔ좋음. Mapper부르는건 안 좋음.
+//DB 연동 x // BO를 가져오는ㄱ ㅔ좋음. Mapper부르는건 안 좋음. 자신의 mapper부르는건 괜찮은데, 다른 mapper부르는거 안 좋음.
 @Service
 public class TimelineBO {
 	
@@ -68,14 +67,14 @@ public class TimelineBO {
 		
 		
 		// 내가(로그인 된 사람) 좋아요를 눌렀는지 여부
-		boolean like = likeBO.checkLike(userId, post.getId());
-		card.setFilledLike(like);
-		// 선생님 코드 - card.setFiledLike(likeBO.existLike(post.getId(), userId));  //post.getId(), userId - 순서 상관 없음.
+//		boolean like = likeBO.checkLike(userId, post.getId());
+//		card.setFilledLike(like);
+		// < 선생님 코드 >
+		 card.setFilledLike(likeBO.existLike(post.getId(), userId));  //post.getId(), userId - 순서 상관 없음. userId는 null 일 수 있음. //** breakpoint
 		
 		
 		// 좋아요 개수
-		Integer likeCount = likeBO.getLikeCouHntByPostId(post.getId());
-		card.setLikeCount(likeCount);
+		card.setLikeCount(likeBO.getLikeCountByPostId(post.getId()));
 		// 선생님 코드
 		//card.getLikeCountByPostId(likeBO.);
 		

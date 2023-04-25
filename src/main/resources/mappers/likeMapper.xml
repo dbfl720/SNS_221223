@@ -66,8 +66,8 @@
  	</delete>
  	
  	
- 	<select id="selectCheckLike" parameterType="Integer" resultType="boolean">
- 		SELECT EXISTS(               <!-- null -> false 바꾸는 것.  --><!-- 해당 유저ID가 존재하는지 체크(존재시 1 리턴으로 boolean 체크됨) -->
+ 	<!-- <select id="selectCheckLike" parameterType="Integer" resultType="boolean">
+ 		SELECT EXISTS(               null -> false 바꾸는 것. 해당 유저ID가 존재하는지 체크(존재시 1 리턴으로 boolean 체크됨)
  		
  		SELECT 1 
  		FROM `like`
@@ -75,11 +75,11 @@
 			`userId` = #{userId}
 			AND `postId` = #{postId})
  		
- 	</select>
+ 	</select> -->
  	
  	
  	
- 	<select id="selectLikeCountByPostId" parameterType="int" resultType="int">
+ 	<!-- <select id="selectLikeCountByPostId" parameterType="int" resultType="int">
  		SELECT
  			COUNT(1)
  		FROM
@@ -88,7 +88,7 @@
 			`postId` = #{postId}
  		
  	
- 	</select>
+ 	</select> -->
  	
  	
 
