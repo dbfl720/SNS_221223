@@ -7,12 +7,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component   // 특정한 역할을 하지 않은 조상 spring bean // 클래스를 Spring Bean으로 만드는 기본 어노테이션
 public class FileManagerService {
 
+	
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());  // Mybatis 임포트문  제거. 
+	
+	
 	// 실제 업로드 된 이미지가 저장될 경로 (서버)
 	public static final String FILE_UPLOAD_PATH = "/Users/hongyuri/Desktop/메가스터디 IT/Spring_project/sns/workspace/images/";
 
@@ -54,6 +61,33 @@ public class FileManagerService {
 	  // uuid 생성
 		public static String getUuid() {
 			return UUID.randomUUID().toString().replaceAll("-", "");
+		}
+		
+		
+		
+		public void deleteFile(String imagePath) {
+			Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", ""));
+			
+			// 이미지 삭제
+			if (Files.exists(path)) {
+				try {
+					Files.delete(path);
+				} catch (IOException e) {
+					logger.error("[이미자 삭제] 이밎 삭제 실패. imagePath:{}", imagePath);
+					return;
+				}
+			}
+			
+			
+			// 디렉토리(폴더) 삭제
+			path = path.getParent();
+			if (Files.exists(path)) {
+				try {
+					Files.delete(path);
+				} catch (IOException e) {
+					logger.error("[이미지 삭제] 디렉토리 삭제 실패. imagePath:{}", imagePath);
+				}
+			}
 		}
 }
 

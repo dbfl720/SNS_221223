@@ -29,7 +29,10 @@ public interface CommentMapper {
 
 	
 	// delete
-		public int deleteComment( int commentId);
+		public int deleteComment(int commentId);
 		
 		
+		
+	// delete
+		public void deleteCommentByPostId(int postId);
 }

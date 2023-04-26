@@ -17,7 +17,7 @@ public class LikeBO {
 		// like 있는지 확인
 		int likeCount = likeMapper.selectLikeCountByPostIdOrUserId(postId, userId);
 		if(likeCount > 0) { // 있으면 제거
-			likeMapper.deleteLikeByUserIdPostId(userId, postId);
+			likeMapper.deleteLikeByUserIdPostId(postId, userId);
 			
 		} else {  // 없으면 추가
 			likeMapper.insertLike(userId, postId);
@@ -49,5 +49,13 @@ public class LikeBO {
 		return likeMapper.selectLikeCountByPostIdOrUserId(postId, null);
 		
 	}
+	
+	
+	// delete
+	public int deleteLikeByUserIdPostId (
+			int postId, int userId) {
+		return likeMapper.deleteLikeByUserIdPostId(postId, userId);
+	}
+	
 
 }

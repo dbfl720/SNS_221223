@@ -61,8 +61,8 @@
  		FROM
  			`like`
 		WHERE
-			`userId` = #{userId}
-			AND `postId` = #{postId}
+			`postId` = #{postId}
+			AND `userId` = #{userId}
  	</delete>
  	
  	

@@ -26,7 +26,11 @@ public class UserController {
 	 }
 	 
 	 
-	 
+	 /**
+	  * 로그인 화면
+	  * @param model
+	  * @return
+	  */
 	//localhost:8080/user/sign_in_view
 		 @GetMapping("/sign_in_view")
 	 public String signInView(Model model) {
@@ -35,7 +39,11 @@ public class UserController {
 	 }
 		 
 		 
-		 
+	 /**
+	  * 로그아웃 화면
+	  * @param session
+	  * @return
+	  */
 	 @RequestMapping("/sign_out")
 		public String signOut(HttpSession session) {
 			// 세션에 있는 모든 것을 비운다.
@@ -46,5 +54,14 @@ public class UserController {
 			// 로그인 화면으로  이동
 			return "redirect:/user/sign_in_view";
 		}
+	 
+	 
+	
+	 // localhost:8080/user/userInfo_view
+	 @GetMapping("/userInfo_view")
+	 public String userInformationView(Model model) {
+		 model.addAttribute("view", "user/userInfo");
+		 return "template/layout";
+	 }
 		 
 }

@@ -42,23 +42,34 @@
 			`comment`
 		WHERE
 			`postId` = #{postId}
- 	
  	</select>
  	
  	
  	
  	
+ 	<delete id="deleteComment" parameterType="int" >
+ 		DELETE
+ 		FROM
+	 		`comment`
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</delete>
  	
  	
  	
  	
  	
- 	 	<delete id="deleteComment" parameterType="int" >
+ 	
+ 	
+ 	
+ 	 	<delete id="deleteCommentByPostId" parameterType="int" >
 	 		DELETE
 	 		FROM
 	 			`comment`
 			WHERE
-				`id` = #{id}
+				`postId` = #{postId}
+				
  	
  		</delete>
  

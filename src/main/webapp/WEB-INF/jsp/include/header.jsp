@@ -13,13 +13,25 @@
 
 <%-- 로그인 정보 --%>
 <c:if test="${not empty userId}">
-	<div class="d-flex justify-content-end">
-		<div class=" d-flex justify-content-end LoginHeaderBox">
-			<div class="createUserName font-weight-bold">${userLoginId}</div>
-			<div class="createUserName2 mt-2 ml-2">${userName}</div>
-			<a href="/user/sign_out" class="ml-5 mr-5 LogoutIcon">Logout</a>
+		<div class="d-flex justify-content-end">
+			<div class=" d-flex justify-content-end LoginHeaderBox">
+				<div class=" profileBox mr-3 mb-3">
+				<%-- 프로필 사진 --%>
+				<a href="#">
+					<img class="mr-5 profile" alt="프로필 사진"
+						src="https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056__480.jpg"
+						height="250" width="300">
+				</a>
+				</div>
+				<%-- 아이디, 이름 --%>
+				<div class="LoginNames d-flex">
+					<div class="createUserName font-weight-bold mt-1">${userLoginId}</div>
+					<div class="createUserName2 mt-2 ml-2">${userName}</div>
+					<div class="LogOutText "><a href="/user/sign_out" class="text-dark " >Logout</a></div>
+				</div>
+			</div>
 		</div>
-	</div>
+	
 </c:if>
 <c:if test="${empty userId}">
 	<div class="d-flex justify-content-end">

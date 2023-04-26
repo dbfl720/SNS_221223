@@ -27,7 +27,15 @@ public interface PostMapper {
 	
 	
 	// delete
-	public int deletePostByPostIdUserId (int postId, int userId);
+	public int deletePostByPostIdUserId (
+			@Param("postId") int postId,
+			@Param("userId") int userId);
+	
+	
+	// select
+	public Post selectPostByPostIdUserId(
+			@Param("postId") int postId,
+			@Param("userId") int userId);
 }
 
 

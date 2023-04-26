@@ -15,13 +15,20 @@ header{height:100px;  padding-top:150px;}
 .LoginIcon{margin-right:150px; color:black; font-size:22px;}
 .LoginIcon:hover{text-decoration: none;}
 .createUserName{font-size:22px;}
-.LogoutIcon{color:black; font-size:22px;}
-.LogoutIcon:hover{text-decoration: none;}
-.LoginHeaderBox{margin-right:20px; margin-top:15px;}
+.LogOutText{color:black; font-size:22px; margin-left:60px; }
+.LogOutText:hover{text-decoration: none;}
+.LoginHeaderBox{ margin-top:15px;}
+.LoginNames{margin-right:80px; margin-top:10px;}
 
-/* 타임라인 텍스트 */
+/* 타임라인 */
 .textareaTimeline{border: none; height: 100px;}
-.textareaBox{border:1px solid; padding:10px;}
-.contents-box{width:450px; margin-top:100px;}
+.textareaBox{border:1px solid; padding:10px; }
+.contents-box{width:450px; padding-top:100px;}
 .commentInput{width:570px;}
+
+
+/* 프로필 사진 및 팔로우 */
+.profilePics{padding-top:60px; padding-left:100px; width:1000px; height:600px;}
+.profileBox{    width: 70px; height: 70px;  border-radius: 70%; overflow: hidden;}
+.profile{  width: 100%;  height: 100%; object-fit: cover;}
 

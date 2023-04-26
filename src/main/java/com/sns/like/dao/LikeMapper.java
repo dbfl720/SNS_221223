@@ -20,9 +20,9 @@ public interface LikeMapper {
 			@Param("postId")int postId);
 	
 	// delete
-	public void deleteLikeByUserIdPostId(
-			@Param("userId")int userId,
-			@Param("postId")int postId);
+	public int deleteLikeByUserIdPostId(
+			@Param("postId")int postId,
+			@Param("userId")int userId);
 	
 	
 	// select - 안써도 됨. 위에 select 이용.
@@ -38,5 +38,9 @@ public interface LikeMapper {
 	public int selectLikeCountByPostIdOrUserId(
 			@Param("postId")int postId,
 			@Param("userId")Integer userId); // null 가능하게 - Integer
+	
+	
+	
+	
 	
 }

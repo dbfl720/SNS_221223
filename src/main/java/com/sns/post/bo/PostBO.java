@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.comment.bo.CommentBO;
+import com.sns.comment.model.Comment;
 import com.sns.common.FileManagerService;
 import com.sns.like.bo.LikeBO;
 import com.sns.post.dao.PostMapper;
@@ -21,8 +22,6 @@ public class PostBO {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private PostBO postBO;
 	
 	@Autowired
 	private PostMapper postMapper;
@@ -37,8 +36,7 @@ public class PostBO {
 	private CommentBO commentBO;
 	
 	
-	@Autowired
-	private UserBO userBO;
+
 
 	// insert
 	public int addPost(int userId, String userLoginId, String content, MultipartFile file) {
@@ -67,24 +65,42 @@ public class PostBO {
 		// db 글삭제...
 		// 좋아요, 댓글, 사진 ...
 		
-		// 기존 글 가져온다.
-		List<Post> post = getPostList();
-		if (post == null) {  // **실무에서는 null체크 필수임..
-			logger.warn("[글 삭제] post is null. postId:{}, userId:{}", postId, userId); // 에러 메시지 쌓아둬서 에러사이트에서 보는 방법. 와일드 카드.
-			return 0; // 메소드 종료.
+		
+		
+		// 기존글 가져오기.
+		Post post = getPostByPostIdUserId( postId, userId);
+		if (post == null) {
+			logger.error("[delete post] postId:{}, userId:{}", postId, userId);
+			return 0;
 		}
 		
 		// 댓글
-		commentBO.generateCommentViewList(postId);
+		commentBO.deleteCommentByPost(postId);
+		
 		
 		// 좋아요
-		likeBO.getLikeCountByPostId(postId);
+		likeBO.deleteLikeByUserIdPostId(postId, userId);
+
 		
 		// 사진
 		fileManager.deleteFile(post.getImagePath());
+	
+		
+
 		
 		return postMapper.deletePostByPostIdUserId(postId, userId);
 	}
+	
+	
+	
+	
+	// select
+	public Post getPostByPostIdUserId(int postId, int userId) {
+		return postMapper.selectPostByPostIdUserId(postId, userId);
+	}
+	
+	
+	
 	
 	
 }
