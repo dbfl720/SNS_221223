@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.common.EncryptUtils;
 import com.sns.user.bo.UserBO;
@@ -119,6 +121,36 @@ public class UserRestController {
 				
 		return result;
 			
+		
+	}
+	
+	
+	
+	
+	@PutMapping("/update")
+	public Map<String, Object> create (
+		@RequestParam("file") MultipartFile file,
+		HttpSession session) {
+		
+		// session에서 유저 정보 꺼내옴.
+		int userId = (int)session.getAttribute("userId");
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		
+		// db insert
+		int rowCount = userBO.updateProfileUser(userId,userLoginId,file);
+				
+		
+		// 응답
+		Map<String, Object> result = new HashMap<>();
+		if(rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "메모를 저장하지 못했습니다.");
+		}
+		return result;
+		
 		
 	}
 		

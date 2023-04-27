@@ -39,6 +39,28 @@
 		)
 	</insert>
 	
+	
+	
+	<insert id="insertProfileUser" parameterType="map">
+		INSERT INTO `user`
+		(
+			
+			`profileImagePath`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			
+			 #{profileImagePath}
+			, NOW()
+			, NOW()
+		)
+	</insert>
+	
+	
+	
+	
 	<select id="selectUserByLoginIdPassword" parameterType="map" resultType="com.sns.user.model.User">
 		SELECT
 			`id` 

@@ -2,6 +2,7 @@ package com.sns.user.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.user.model.User;
 
@@ -24,5 +25,10 @@ public interface UserMapper {
 	
 	
 	public User selectUserById(int id);
+	
+	
+	public int updateProfileUser(
+			@Param("id") int userId,
+			@Param("profileImagePath") String profileImagePath);
 	
 }

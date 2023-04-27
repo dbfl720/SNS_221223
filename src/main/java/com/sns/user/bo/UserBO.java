@@ -2,7 +2,10 @@ package com.sns.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.sns.common.FileManagerService;
+import com.sns.post.dao.PostMapper;
 import com.sns.user.dao.UserMapper;
 import com.sns.user.model.User;
 
@@ -10,6 +13,9 @@ import com.sns.user.model.User;
 public class UserBO {
 	
 	@Autowired UserMapper userMapper;
+	
+	@Autowired
+	private FileManagerService fileManager;
 	
 	public User getUserByLoginId(String loginId) {
 		return userMapper.selectUserByLoginId(loginId);
@@ -36,6 +42,28 @@ public class UserBO {
 		return userMapper.selectUserById(id);
 	}
 
+	
+	// update
+	public int updateProfileUser(int userId, String userLoginId, MultipartFile file) {
+		
+		// 기존 프로필사진 가져오기.
+		User user = getUserById(userId);
+		
+		
+		String profileImagePath = null;
+		if (file != null) {
+			profileImagePath = fileManager.saveFile(userLoginId, file); // ** breakpoint
+		}
+		
+		// 성공여부 체크 후 기존 이미지 제거 
+		// -- imagePath가 null이 아닐 때 (성공) 그리고 기존 이미지가 있을 때 => 기존 이미지 삭제
+		if (profileImagePath != null && user.getProfileImagePath() != null) {
+			// 이미지 제거
+			fileManager.deleteFile(user.getProfileImagePath()); // ** 기존 이미지  - post.getImagePaht() // x - imagePath (새로운 이미지)
+		}
+		
+		return userMapper.updateProfileUser( profileImagePath);
+	}
 
 	
 }
