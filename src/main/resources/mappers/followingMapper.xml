@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+ 
+ <mapper namespace="com.sns.following.dao.FollowingMapper">
+ 
+ 
+ 	<insert id="insertFollowing" parameterType="map">
+ 		INSERT INTO `following`
+ 		(
+ 			`followingUserId` 
+			, `followerUserId`
+ 			,`createdAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{followingUserId}
+ 			,#{followerUserId}
+ 			,NOW()
+ 		)
+ 	
+ 	</insert>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 	 	<!-- likeCount 쿼리 하나로 합치기  // mybatis 문법--> 
+ 	<select id="selectFollowingCountByFollowingUserIdAndFollowerUserId" parameterType="map" resultType="int">
+ 		SELECT
+ 			COUNT(*)
+		FROM
+			`following`
+		WHERE
+			`followingUserId` = #{followingUserId}
+			AND `followerUserId` = #{followerUserId}
+		
+ 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	<delete id="deleteFollowingByFollowingUserIdAndFollowerUserId" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`following`
+		WHERE
+			`followingUserId` = #{followingUserId}
+			AND `followerUserId` = #{followerUserId}
+ 	</delete>
+ 
+ </mapper>
+ 

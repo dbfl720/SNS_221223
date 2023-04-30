@@ -30,4 +30,5 @@ header{height:100px;  padding-top:150px;}
 .profilePics{padding-top:60px; padding-left:100px; width:1000px; height:600px;}
 .profileBox{    width: 70px; height: 70px;  border-radius: 70%; overflow: hidden;}
 .profile{  width: 100%;  height: 100%; object-fit: cover;}
+.headerFollowing{margin-right: 210px; margin-top:20px; font-weight:lighter;}
 

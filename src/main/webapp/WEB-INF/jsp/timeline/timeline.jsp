@@ -38,13 +38,14 @@
 			<div class="my-5 border-bottom">
 				<%--y : y축 -> top , bottom --%>
 				<div class=" rounded mt-2">
-					<%-- 글쓴이, 더보기(삭제) --%>
+					<%-- 글쓴이,팔로잉 --%>
 					<div class="p-2 d-flex justify-content-between">
-						<span class="font-weight-bold">${card.user.loginId}</span>
+					<a href="#" class="more-following text-dark" data-toggle="modal" data-target="#followingModal" data-user-id="${card.user.id}" >
+						<span class="font-weight-bold  ">${card.user.loginId}</span>
+					</a>
 
 
-
-						<%-- 더보기(내가 쓴 글일 때만 노출) --%>
+						<%-- 더보기, 삭제(내가 쓴 글일 때만 노출) --%>
 						<c:if test="${card.user.id eq userId}">
 						<a href="#" class="more-btn " data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}"> <img
 							src="/static/img/more-icon.png" width="30">
@@ -178,6 +179,22 @@
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="followingModal" >
+	<%-- modal-dialog-centered : 모달 창을 수직 가운데 정렬 --%>
+	<%-- modal-sm: small 모달 --%>
+  	<div class="modal-dialog modal-dialog-centered modal-sm"> 
+    	<div class="modal-content text-center">
+      		<div class="py-3 border-bottom"> 
+      			<a href="#" id="followingBtn" class="text-dark">팔로잉하기</a>
+   			</div>
+   			<div class="py-3">
+   				<%-- data-dismiss="modal" => 모달창 닫힘 --%>
+   				<a href="#" data-dismiss="modal" class="text-dark">취소하기</a>
+   			</div>
+    	</div>
+  </div>
+</div>
 
 
 
@@ -372,7 +389,7 @@
 				
 				
 				
-				// 삭제
+				// 댓글 삭제
 				$('.deleteBtn').on('click', function(e) {
 					e.preventDefault(); // 위로 올라가는 현상 방지
 
@@ -421,6 +438,9 @@
 				}); // 글 삭제
 				
 				
+				
+				
+				
 				// 모달 안에 있는 삭제하기 버튼 클릭 => 진짜 삭제
 				$('#modal #deletePostBtn').on('click', function(e){   // modal 안에 있는 deletePostBtn  띄어쓰기. #modal 안써도 됨. 그냥 알아보기 쉬우라고..
 					e.preventDefault();
@@ -430,8 +450,7 @@
 					// alert(postId);
 				
 					
-					
-					
+				
 					
 					
 					// ajax 글 삭제 
@@ -463,6 +482,59 @@
 					}); // ajax 
 				});
 				
+				
+				
+				
+				
+				
+				// 팔로잉
+				$('.more-following').on('click', function(e){
+					e.preventDefault();   // a태그 위로 올라감 방지.
+					
+					
+					let followingUserId = $(this).data('user-id');
+					// alert(followingUserId);
+					
+					// 모달 태그에 (재활용 되는) data-post-id를 심어줌
+					$('#followingModal').data('user-id', followingUserId);  // setting - modal태그에 세팅한 것임. 내부적으로 postId심어져있음 
+					
+				});  // 팔로잉
+				
+				
+				
+				
+				
+				
+				// 모달 안에 있는 팔로잉하기 버튼 클릭 => 진짜 팔로잉
+				$('#followingModal #followingBtn').on('click', function(e){   // modal 안에 있는 deletePostBtn  띄어쓰기. #modal 안써도 됨. 그냥 알아보기 쉬우라고..
+					e.preventDefault();
+					
+				
+					let followingUserId = $('#followingModal').data('user-id');
+					// alert(followingUserId);
+					
+					
+					$.ajax({
+						// req
+						url : "/following/" + followingUserId //    /following/13
+
+						// res
+						,success : function(data) {
+							if (data.code == 1) {
+								location.reload();
+								alert("팔로잉 성공!");
+							} else if (data.code == 300) {
+								alert(data.errorMessage);
+								// 비로그인 시 로그인 페이지로 이동
+								location.href = "/user/sign_in_view";
+							}
+						},
+						error : function(request, status, error) {
+							alert("좋아요/해제 실패했습니다.");
+						}
+					});
+					
+				});  // followingModal
 				
 			}); // ready
 </script>

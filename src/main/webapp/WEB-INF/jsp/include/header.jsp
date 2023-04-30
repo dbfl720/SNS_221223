@@ -37,11 +37,15 @@
 					<div class="LogOutText "><a href="/user/sign_out" class="text-dark " >Logout</a></div>
 				</div>
 			</div>
-				<div>
-					<div>follower</div>
-					<div>following</div>
-				</div>
 		</div>
+				<div class="d-flex justify-content-end headerFollowing">
+					<div class="mr-2 d-flex">Follower
+						<div class="ml-2 font-weight-bold">8</div>
+					</div> 
+					<div class="d-flex">Following
+						<div class="ml-2 font-weight-bold">8</div>
+					</div>
+				</div>
 	
 </c:if>
 <c:if test="${empty userId}">
@@ -123,8 +127,19 @@
 			alert("사진을 변경하는 실패했습니다. 관리자에게 문의해주세요.");
 		}
 		
-	}); // ajax // 프로필 사진 변경
+		}); // ajax // 프로필 사진 변경
 	}); // file2
+	
+	
+	
+	
+	
+	
+	
+	// 팔로우 
+	
+	
+	
 	
 }); // ready 
 </script>

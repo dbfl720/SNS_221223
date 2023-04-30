@@ -12,7 +12,7 @@ public class LikeBO {
 	private LikeMapper likeMapper;
 	
 	
-	// select - 좋아요 삭제,추가 
+	// insert - 좋아요 삭제,추가 
 	public void likeToggle(int userId, int postId) {
 		// like 있는지 확인
 		int likeCount = likeMapper.selectLikeCountByPostIdOrUserId(postId, userId);
