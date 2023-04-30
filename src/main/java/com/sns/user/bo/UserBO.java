@@ -62,8 +62,10 @@ public class UserBO {
 			fileManager.deleteFile(user.getProfileImagePath()); // ** 기존 이미지  - post.getImagePaht() // x - imagePath (새로운 이미지)
 		}
 		
-		return userMapper.updateProfileUser( profileImagePath);
+		return userMapper.updateProfileUser( userId, profileImagePath);
 	}
-
+	
+	
+	
 	
 }

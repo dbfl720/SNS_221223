@@ -113,6 +113,7 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("profileImagePath", user.getProfileImagePath());
 			
 		}  else {  // 로그인 불가
 			result.put("code", 500);

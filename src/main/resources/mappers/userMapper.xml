@@ -10,6 +10,7 @@
 			,`password`
 			,`name`
 			,`email`
+			,`profileImagePath`
 			,`createdAt`
 			,`updatedAt`
 		FROM
@@ -41,22 +42,16 @@
 	
 	
 	
-	<insert id="insertProfileUser" parameterType="map">
-		INSERT INTO `user`
-		(
+	<update id="updateProfileUser" parameterType="map">
+		UPDATE `user`
+		SET
 			
-			`profileImagePath`
-			,`createdAt`
-			,`updatedAt`
-		)
-		VALUES
-		(
-			
-			 #{profileImagePath}
-			, NOW()
-			, NOW()
-		)
-	</insert>
+			`profileImagePath` =  #{profileImagePath}
+			, `updatedAt` = NOW()
+		WHERE
+			`id` = #{id}	
+
+	</update>
 	
 	
 	
@@ -68,6 +63,7 @@
 			, `password`
 			, `name`
 			, `email`
+			, `profileImagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -84,6 +80,7 @@
 			, `password`
 			, `name`
 			, `email`
+			, `profileImagePath`
 			, `createdAt`
 			, `updatedAt`
 		FROM

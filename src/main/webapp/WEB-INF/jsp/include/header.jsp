@@ -16,7 +16,6 @@
 		<div class="d-flex justify-content-end">
 			<div class=" d-flex justify-content-end LoginHeaderBox">
 			
-			
 				<%-- 프로필 사진 --%>
 				<%-- file태그는 숨겨두고 이미지를 클릭하면 file태그를 클릭한 것처럼 이벤트 줌. --%>
 				<input type="file" id="file2" multiple='multiple' class="d-none"
@@ -27,9 +26,10 @@
 				
 				<div class=" profileBox mr-3">
 					<img id="profileImg" class=" profile" alt="프로필 사진"
-						src="https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056__480.jpg"
+						src="${profileImagePath}"
 						height="250" width="300">
 				</div>
+			
 				<%-- 아이디, 이름 --%>
 				<div class="LoginNames d-flex">
 					<div class="createUserName font-weight-bold mt-1" >${userLoginId}</div>
@@ -37,6 +37,10 @@
 					<div class="LogOutText "><a href="/user/sign_out" class="text-dark " >Logout</a></div>
 				</div>
 			</div>
+				<div>
+					<div>follower</div>
+					<div>following</div>
+				</div>
 		</div>
 	
 </c:if>

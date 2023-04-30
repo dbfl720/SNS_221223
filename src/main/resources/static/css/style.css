@@ -17,7 +17,6 @@ header{height:100px;  padding-top:150px;}
 .createUserName{font-size:22px;}
 .LogOutText{color:black; font-size:22px; margin-left:60px; }
 .LogOutText:hover{text-decoration: none;}
-.LoginHeaderBox{ margin-top:15px;}
 .LoginNames{margin-right:80px; margin-top:10px;}
 
 /* 타임라인 */

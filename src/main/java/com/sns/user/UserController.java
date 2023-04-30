@@ -1,9 +1,14 @@
 package com.sns.user;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sns.timeline.model.CardView;
+import com.sns.user.model.User;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +29,11 @@ public class UserController {
 		 model.addAttribute("view", "user/signUp");   // 가운데 section 조각페이지 이렇게 세팅해랏 !  - singUp(jsp)에서 view변수로 사용 가능.
 		 return "template/layout";
 	 }
+	 
+	 
+
+	 
+	 
 	 
 	 
 	 /**
@@ -56,12 +66,10 @@ public class UserController {
 		}
 	 
 	 
+	 
+	 
 	
-	 // localhost:8080/user/userInfo_view
-	 @GetMapping("/userInfo_view")
-	 public String userInformationView(Model model) {
-		 model.addAttribute("view", "user/userInfo");
-		 return "template/layout";
-	 }
+	
+
 		 
 }
