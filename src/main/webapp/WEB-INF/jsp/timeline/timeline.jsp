@@ -39,11 +39,13 @@
 				<%--y : y축 -> top , bottom --%>
 				<div class=" rounded mt-2">
 					<%-- 글쓴이,팔로잉 --%>
-					<div class="p-2 d-flex justify-content-between">
+					<div class="p-2 d-flex justify-content-between">		
 					<a href="#" class="more-following text-dark" data-toggle="modal" data-target="#followingModal" data-user-id="${card.user.id}" >
 						<span class="font-weight-bold  ">${card.user.loginId}</span>
 					</a>
-
+					
+					
+					
 
 						<%-- 더보기, 삭제(내가 쓴 글일 때만 노출) --%>
 						<c:if test="${card.user.id eq userId}">
@@ -178,24 +180,30 @@
 </div>
 
 
-
 <!-- Modal -->
+<c:forEach items="${cardList}" var="card" varStatus="status">
 <div class="modal fade" id="followingModal" >
 	<%-- modal-dialog-centered : 모달 창을 수직 가운데 정렬 --%>
 	<%-- modal-sm: small 모달 --%>
   	<div class="modal-dialog modal-dialog-centered modal-sm"> 
     	<div class="modal-content text-center">
+    	<%-- 팔로잉이 안눌러졌을 때. --%>
       		<div class="py-3 border-bottom"> 
-      			<a href="#" id="followingBtn" class="text-dark">팔로잉하기</a>
+				<c:if test="${card.checkedFollowing == false}">
+		      			<a href="#" id="followingBtn" class="text-dark" data-user-id="${card.user.id}">팔로잉하기</a>
+				</c:if>
+				<c:if test="${card.checkedFollowing == true}">
+		      			<a href="#" id="followingBtn" class="text-dark" data-user-id="${card.user.id}">팔로잉 취소하기</a>
+				</c:if>
    			</div>
    			<div class="py-3">
    				<%-- data-dismiss="modal" => 모달창 닫힘 --%>
-   				<a href="#" data-dismiss="modal" class="text-dark">취소하기</a>
+   				<a href="#" data-dismiss="modal" class="text-dark">닫기</a>
    			</div>
     	</div>
-  </div>
+ 	</div>
 </div>
-
+</c:forEach>
 
 
 <script>

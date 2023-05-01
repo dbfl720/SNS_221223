@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sns.comment.bo.CommentBO;
 import com.sns.comment.model.CommentView;
+import com.sns.following.bo.FollowingBO;
 import com.sns.like.bo.LikeBO;
 import com.sns.post.bo.PostBO;
 import com.sns.post.model.Post;
@@ -32,6 +33,9 @@ public class TimelineBO {
 	
 	@Autowired
 	private LikeBO likeBO;
+	
+	@Autowired
+	private FollowingBO followingBO;
 	
 	
 	
@@ -79,8 +83,12 @@ public class TimelineBO {
 		//card.getLikeCountByPostId(likeBO.);
 		
 		
+		// 내가 following 눌렀는지 여부
+		card.setCheckedFollowing(followingBO.existFollowing(post.getUserId(), userId));
 		
-		
+			
+		// following 개수
+		card.setFollowingCount(followingBO.getFollowingCountByFollowingUserId(post.getUserId()));
 		
 		//******!!!!! 카드 리스트에 채우기!!! ****!!!!
 		cardViewList.add(card);

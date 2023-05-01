@@ -10,7 +10,7 @@ public interface FollowingMapper {
 	// select
 	public int selectFollowingCountByFollowingUserIdAndFollowerUserId(
 			@Param("followingUserId")int followingUserId,
-			@Param("followerUserId")int followerUserId);
+			@Param("followerUserId")Integer followerUserId);
 	
 	
 	// delete

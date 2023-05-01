@@ -42,11 +42,11 @@ public class FollowingBO {
 	
 	
 	
-//	// select
-//		public int getFollowingCountByFollowingUserId(int followingUserId) {  // 개수 리턴 int 
-//			return followingMapper.selectFollowingCountByFollowingUserIdAndFollowerUserId(followingUserId);
-//			
-//		}
+	// select
+		public int getFollowingCountByFollowingUserId(int followingUserId) {  // 개수 리턴 int 
+			return followingMapper.selectFollowingCountByFollowingUserIdAndFollowerUserId(followingUserId, null);
+			
+		}
 
 		
 		

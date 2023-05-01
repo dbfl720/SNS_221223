@@ -37,9 +37,9 @@
 			`following`
 		WHERE
 			`followingUserId` = #{followingUserId}
+			<if test="followerUserId != null">
 			AND `followerUserId` = #{followerUserId}
-		
- 	
+			</if>
  	</select>
  	
  	
