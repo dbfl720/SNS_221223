@@ -31,7 +31,8 @@ public class TimelineController {
 		//List<Post> postList = postBO.getPostList();
 		Integer userId = (Integer)session.getAttribute("userId"); // null 허용 - Integer
 		List<CardView> cardList = timelineBO.generateCardList(userId); // 화면용 가공용은 view이름 쓸 것임.
-
+		
+		
 		
 		model.addAttribute("cardList", cardList);
 		//model.addAttribute("postList", postList);

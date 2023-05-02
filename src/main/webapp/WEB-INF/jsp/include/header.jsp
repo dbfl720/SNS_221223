@@ -38,14 +38,7 @@
 				</div>
 			</div>
 		</div>
-				<div class="d-flex justify-content-end headerFollowing">
-					<div class="mr-2 d-flex">Follower
-						<div class="ml-2 font-weight-bold">8</div>
-					</div> 
-					<div class="d-flex">Following
-						<div class="ml-2 font-weight-bold">8</div>
-					</div>
-				</div>
+				
 	
 </c:if>
 <c:if test="${empty userId}">

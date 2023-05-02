@@ -44,7 +44,17 @@
 						<span class="font-weight-bold  ">${card.user.loginId}</span>
 					</a>
 					
-					
+					<%-- 팔로잉, 팔로워 --%>
+				
+					<div class="d-flex justify-content-end headerFollowing">
+						<div class="mr-2 d-flex">Follower
+							<div class="ml-2 font-weight-bold">8</div>
+						</div> 
+						<div class="d-flex">Following					
+							<div class="ml-2 font-weight-bold">${card.followingCount}</div>
+						</div>
+					</div>
+			
 					
 
 						<%-- 더보기, 삭제(내가 쓴 글일 때만 노출) --%>

@@ -33,21 +33,26 @@ public class CardView {
 
 		
 		
-		
-		// 팔로잉 n개
-		private int followingCount;
+
 		
 		
 		// 내가 following 한지 여부 boolean
 		private boolean checkedFollowing;
 
-		
-		
-		
+
+
+
+		// following 개수
+		private int FollowingCount;
+
+
+
 
 		public Post getPost() {
 			return post;
 		}
+
+
 
 
 		public void setPost(Post post) {
@@ -55,9 +60,13 @@ public class CardView {
 		}
 
 
+
+
 		public User getUser() {
 			return user;
 		}
+
+
 
 
 		public void setUser(User user) {
@@ -65,9 +74,13 @@ public class CardView {
 		}
 
 
+
+
 		public List<CommentView> getCommentList() {
 			return commentList;
 		}
+
+
 
 
 		public void setCommentList(List<CommentView> commentList) {
@@ -75,9 +88,13 @@ public class CardView {
 		}
 
 
+
+
 		public int getLikeCount() {
 			return likeCount;
 		}
+
+
 
 
 		public void setLikeCount(int likeCount) {
@@ -85,9 +102,13 @@ public class CardView {
 		}
 
 
+
+
 		public boolean isFilledLike() {
 			return filledLike;
 		}
+
+
 
 
 		public void setFilledLike(boolean filledLike) {
@@ -95,14 +116,6 @@ public class CardView {
 		}
 
 
-		public int getFollowingCount() {
-			return followingCount;
-		}
-
-
-		public void setFollowingCount(int followingCount) {
-			this.followingCount = followingCount;
-		}
 
 
 		public boolean isCheckedFollowing() {
@@ -110,9 +123,28 @@ public class CardView {
 		}
 
 
+
+
 		public void setCheckedFollowing(boolean checkedFollowing) {
 			this.checkedFollowing = checkedFollowing;
 		}
+
+
+
+
+		public int getFollowingCount() {
+			return FollowingCount;
+		}
+
+
+
+
+		public void setFollowingCount(int followingCount) {
+			FollowingCount = followingCount;
+		}
+		
+
+
 		
 		
 

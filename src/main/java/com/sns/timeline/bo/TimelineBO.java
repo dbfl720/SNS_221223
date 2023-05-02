@@ -86,9 +86,11 @@ public class TimelineBO {
 		// 내가 following 눌렀는지 여부
 		card.setCheckedFollowing(followingBO.existFollowing(post.getUserId(), userId));
 		
-			
+		
 		// following 개수
 		card.setFollowingCount(followingBO.getFollowingCountByFollowingUserId(post.getUserId()));
+			
+		
 		
 		//******!!!!! 카드 리스트에 채우기!!! ****!!!!
 		cardViewList.add(card);
