@@ -19,13 +19,18 @@ public class CommentBO {
 	
 	@Autowired
 	private CommentMapper commentMapper;
+
+		
+	@Autowired
+	private UserBO userBO;
+	
 	
 	//브라우저 <->  Controller <-> TimelineBO. -> PostBO -> UserBO.   
 	//                            CommentBO -> UserBO <-> xml 
 	// 어떤 사이트를 만들던 간에 userBo는 db에 가까움.
-		
-	@Autowired
-	private UserBO userBO;
+	
+	
+	
 	
 	// insert
 	public int addComment(

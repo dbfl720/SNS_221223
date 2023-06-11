@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sns.comment.model.Comment;
-import com.sns.comment.model.CommentView;
 
 @Repository
 public interface CommentMapper {

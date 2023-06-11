@@ -272,7 +272,7 @@
 							// 파일이 업로드 된 경우에만 확장자 체크
 							let ext = file.split(".").pop().toLowerCase();
 							// 확장자만 뽑아서 소문자로 변경한다.
-							if ($.inArray(ext, [ 'jpg', 'jpeg', 'png', 'gif',
+							if ($.inArray(ext, [ 'jpg', 'jpeg', 'png', 'gif',        //배열에 값이있으면 return 해당 index return 값이 없으면 -1
 									'webp' ]) == -1) {
 								alert("이미지 파일만 업로드 할 수 있습니다.");
 								$('#file').val(''); // 파일을 비운다.
@@ -323,7 +323,7 @@
 
 				
 				
-				
+			
 				// 댓글 쓰기
 				$('.commentBtn').on('click', function() {
 					let postId = $(this).data("post-id"); // *** jquery .data() 문법
