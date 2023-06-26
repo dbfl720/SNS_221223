@@ -1,4 +1,24 @@
+# 오늘의 소식 프로그램
+오늘 하루 있었던 일들을 사진과 글로 포스팅해서 사람들과 댓글로 소통하는 프로그램입니다. <br><br><br>
 
+
+## 홍유리 개인 정보
+- Blog : https://dbfl720.tistory.com
+- Youtube : www.youtube.com/@YURIHONG-uh8py
+- Email : dbfl720@gmail.com
+<br><br><br>
+
+## Description
+  -  Back-End  :     JAVA ,     SpringBoot,     JSP,    JST  <br>    
+  -  DB  :  MySQL, MyBatis, JPA <br>  
+  -  SERVER  :     Apach Tomcat <br>
+  -  Front-End   :    JQuery,      JavaScript ,    CSS,      HTML,     BOOTSTRAP <br>
+  -  TOOLS :     Eclips,  SpringToolSuit4,   SourceTree,   Visual Studio Code <br><br><br> <br><br>
+
+
+
+
+  
 #  🌳 에러 코드
 
 Stacktrace:] with root cause
