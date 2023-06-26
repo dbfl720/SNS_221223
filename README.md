@@ -11,7 +11,6 @@
 ## Description
   -  Back-End  :     JAVA ,     SpringBoot,     JSP,    JST  <br>    
   -  DB  :  MySQL, MyBatis, JPA <br>  
-  -  SERVER  :     Apach Tomcat <br>
   -  Front-End   :    JQuery,      JavaScript ,    CSS,      HTML,     BOOTSTRAP <br>
   -  TOOLS :     Eclips,  SpringToolSuit4,   SourceTree,   Visual Studio Code <br><br><br> <br><br>
 
